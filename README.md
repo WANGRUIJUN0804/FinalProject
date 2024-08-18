@@ -1,62 +1,3 @@
-
-# Vue Test Project
-
-## Project Description
-
-This project is a Vue.js-based web application that utilizes several popular libraries and frameworks, including Vue Router for routing, Vuex for state management, and Element UI for the user interface components. The project also integrates external libraries like Axios for HTTP requests and ECharts for data visualization.
-
-## Table of Contents
-
-- [Project Description](#project-description)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Dependencies](#dependencies)
-- [Dev Dependencies](#dev-dependencies)
-- [Project Structure](#project-structure)
-- [Development](#development)
-- [Build](#build)
-- [Linting](#linting)
-- [License](#license)
-
-## Installation
-
-To set up the project locally, follow these steps:
-
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd vue_test
-   ```
-
-2. **Install the required dependencies**:
-   ```bash
-   npm install
-   ```
-
-## Usage
-
-After the dependencies are installed, you can start the development server with:
-
-```bash
-npm run serve
-```
-
-This command will start the Vue.js development server and you can view the application by navigating to `http://localhost:8080` in your web browser.
-
-## Dependencies
-
-The following dependencies are required for this project:
-
-- `axios`: ^1.7.2 - For making HTTP requests.
-- `core-js`: ^3.8.3 - Standard library polyfill.
-- `echarts`: ^5.5.1 - For charting and data visualization.
-- `element-ui`: ^2.15.14 - UI component library for Vue.js.
-- `jquery`: ^3.7.1 - JavaScript library for DOM manipulation.
-- `paper`: ^0.12.18 - Vector graphics scripting framework.
-- `vue`: ^2.6.14 - The core framework for building the user interface.
-- `vue-router`: ^3.6.5 - The official router for Vue.js.
-- `vuex`: ^4.1.0 - State management pattern + library for Vue.js.
-
 ## Dev Dependencies
 
 The following development dependencies are used in this project:
@@ -84,18 +25,26 @@ vue_test/
 ├── src/                 # Source code
 │   ├── assets/          # Static assets (images, fonts, etc.)
 │   ├── components/      # Vue.js components
-│   ├── views/           # Vue.js views
+│   ├── pages/           # Vue.js pages
 │   ├── router/          # Vue Router configuration
 │   ├── store/           # Vuex store configuration
 │   ├── App.vue          # Main Vue component
 │   └── main.js          # Application entry point
 │
-├── .eslintignore        # Files and directories ignored by ESLint
-├── .eslintrc.js         # ESLint configuration
+├── 
+├── vue.config.js         # modify the default settings of a Vue CLI project
 ├── babel.config.js      # Babel configuration
 ├── package.json         # Project dependencies and scripts
 └── README.md            # Project documentation
 ```
+
+
+## Installation
+
+To install the required dependencies for this project, run the following command:
+
+```bash
+npm install
 
 ## Development
 
@@ -116,17 +65,3 @@ npm run build
 ```
 
 This will create an optimized, production-ready build of the project in the `dist/` directory.
-
-## Linting
-
-To lint the project's JavaScript and Vue.js files, use the following command:
-
-```bash
-npm run lint
-```
-
-This will check the code for any stylistic or potential errors based on the ESLint configuration.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
