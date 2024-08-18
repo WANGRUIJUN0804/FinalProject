@@ -1,6 +1,8 @@
 import Vue from 'vue'
 //引入Vue
 import App from './App.vue'
+// eslint-disable-next-line no-unused-vars
+import store from './store'; // 引入store
 //引入app组件
 //引入ElmentUI组件库
 import ElementUI from 'element-ui';
@@ -19,6 +21,7 @@ Vue.use(ElementUI, { locale });
 // Vue.component(Select.name, Select);
 new Vue({
   el:'#app',
+  store:store,
   //将app放入容器中
   render: h => h(App),
   router:router

@@ -1,25 +1,29 @@
-
 <template>
-	<el-container>
-		<el-aside  class="leftnav-container">
-			<LeftNav class="leftnav"></LeftNav>
-		</el-aside>
-
-		<el-main class="main-content">
-			<router-view></router-view>
-		</el-main>
-	</el-container>
+  <el-container>
+    <el-aside v-if="showSidebar" class="leftnav-container">
+      <LeftNav class="leftnav"></LeftNav>
+    </el-aside>
+    <el-main :class="{ 'main-content': showSidebar }">
+      <router-view></router-view>
+    </el-main>
+  </el-container>
 </template>
 
 <script>
-    import LeftNav from './components/LeftNav.vue';
-    // import axios from 'axios'
-    export default {
-      name: 'App',  
-      components: {
-         LeftNav
-      },
+import LeftNav from './components/LeftNav.vue';
+// import { mapState } from 'vuex';
+
+export default {
+  name: 'App',
+  components: {
+    LeftNav
+  },
+  computed: {
+    showSidebar() {
+      return this.$route.name !== 'Login';
     }
+  }
+};
 </script>
 
 <style>
@@ -29,12 +33,16 @@
   left: 0;
   height: 100%;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  background-color: #2c3e50; /* 根据需要调整背景颜色 */
-  z-index: 1000; /* 确保固定导航栏在其他内容上方 */
+  background-color: #2c3e50;
+  z-index: 1000;
 }
 
 .main-content {
-  margin-left: 400px; /* 根据导航栏的宽度进行调整 */
+  margin-left: 320px;
   padding: 20px;
+}
+
+.main-content.no-sidebar {
+  margin-left: 0;
 }
 </style>

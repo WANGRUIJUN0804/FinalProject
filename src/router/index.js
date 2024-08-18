@@ -7,9 +7,26 @@ import PracticeProjects from "../pages/PracticeProjects.vue";
 import CommitHistory from "../pages/CommitHistory.vue";
 import GroupList from "../pages/GroupList.vue";
 import EditCourseForm from "../pages/EditCourseForm.vue";
-
+import TeamSetting from "../pages/TeamSetting.vue"
+import loginForm from "@/pages/loginForm.vue";
+import Home from "@/pages/Home.vue";
 export default new VueRouter({
     routes:[
+        {
+            path: '/',
+            redirect: '/login' // 默认重定向到登录页面
+          },
+        {  path:'/login',
+            name:'Login',
+            component:loginForm
+
+        },
+        {  path:'/home',
+            name:'Home',
+            component:Home
+
+        },
+
         {  path:'/daohang1',
             name:'daohang1',
             component:daohang1
@@ -46,6 +63,10 @@ export default new VueRouter({
             path:'/edit/:id',
             name:'EditCourseForm',
             component:EditCourseForm
+        }, {
+            path:'/TeamSetting',
+            name:'TeamSetting',
+            component:TeamSetting
         },
       
 

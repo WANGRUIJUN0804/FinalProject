@@ -10,7 +10,7 @@
       <el-select v-model="sizeForm.majorName" placeholder="Please Choose Major">
         <el-option label="SE" value="SE"></el-option>
         <el-option label="EBAC" value="EBAC"></el-option>
-        <el-option label="IS" value="IS"></el-option>
+        <el-option label="AIS" value="AIS"></el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="DeadLine">
@@ -34,14 +34,15 @@
     <el-form-item label="Allowed attempts">
       <el-input v-model="sizeForm.allowedAttempts" type="number"></el-input>
     </el-form-item>
-    <el-form-item label="Lecturer ID">
+    <!-- <el-form-item label="Lecturer ID">
       <el-input v-model="sizeForm.lecturerId" type="number"></el-input>
-    </el-form-item>
+    </el-form-item> -->
     <el-form-item label="Task Description">
       <el-input v-model="sizeForm.taskDescription"></el-input>
     </el-form-item>
     <el-form-item size="large">
       <el-button type="primary" class="float-right" @click="onSubmit">Submit</el-button>
+      <!-- <el-button type="primary" class="float-right" @click="nextPage">NEXT</el-button> -->
     </el-form-item>
   </el-form>
 </template>
@@ -67,6 +68,17 @@ export default {
     };
   },
   methods: {
+    nextPage(){
+      this.$router.push({ 
+      name: 'TeamSetting',
+      params: { 
+        moduleName: this.sizeForm.moduleName,
+        majorName: this.sizeForm.majorName
+      }
+    });  
+    // eslint-disable-next-line no-undef
+    console.log(this.sizeForm.moduleName);
+            },
     formatDate(date) {
       const d = new Date(date);
       const year = d.getFullYear();
@@ -85,6 +97,7 @@ export default {
       return `${this.formatDate(date)} ${this.formatTime(time)}`;
     },
     onSubmit() {
+      const userId = localStorage.getItem('userId');
       const payload = {
         taskName: this.sizeForm.taskName,
         moduleName: this.sizeForm.moduleName,
@@ -93,7 +106,7 @@ export default {
         availableTime: this.sizeForm.date2.length > 0 ? this.formatDateTime(this.sizeForm.date2[0], this.sizeForm.date2[0]) : '',
         unavailableTime: this.sizeForm.date2.length > 1 ? this.formatDateTime(this.sizeForm.date2[1], this.sizeForm.date2[1]) : '',
         allowedAttempts: this.sizeForm.allowedAttempts,
-        lecturerId: this.sizeForm.lecturerId,
+        lecturerId: userId,
         taskDescription: this.sizeForm.taskDescription,
         id: 0, // Assuming this should be set dynamically if needed
       };
@@ -102,7 +115,13 @@ export default {
         .then(response => {
           console.log('Task created successfully!', response);
           EventBus.$emit('course-created', response.data.data);
-          this.$router.push({ name: 'PracticeProjects' }); // 假设返回到任务列表页面
+          this.$router.push({ 
+      name: 'TeamSetting',
+      params: { 
+        moduleName: this.sizeForm.moduleName,
+        majorName: this.sizeForm.majorName
+      }
+    });   // 假设返回到任务列表页面
         })
         .catch(error => {
           console.error('Error creating task:', error);

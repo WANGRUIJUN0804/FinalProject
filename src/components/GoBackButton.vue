@@ -9,6 +9,7 @@ export default {
   methods: {
     goBack() {
       this.$router.go(-1); // 返回上一页
+      
     }
   }
 }
